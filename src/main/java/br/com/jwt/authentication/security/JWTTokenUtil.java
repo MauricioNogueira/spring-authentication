@@ -26,11 +26,12 @@ public class JWTTokenUtil {
 	private Long time;
 	
 	public String generateAccessToken(Usuario user) {
+		Date dataAtual = new Date();
         return Jwts.builder()
                 .setSubject(user.getUsername())
                 .setIssuer(jwtIssuer)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(this.time)) // 1 week
+                .setExpiration(new Date(this.time + dataAtual.getTime())) // 1 week
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
     }

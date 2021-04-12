@@ -21,7 +21,6 @@ public class AuthenticationApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
 		Usuario usuario = new Usuario("mauricio", new BCryptPasswordEncoder().encode("12345").toString());
 		
 		this.usuarioRepository.save(usuario);
